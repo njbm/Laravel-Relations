@@ -15,7 +15,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/users/{id?}',[userController::class,'showUser']);
 
 //get all usr
-Route::get('/users',[userController::class,'homeIndex']);
+// Route::get('/users',[userController::class,'homeIndex']);
 
 //add User
 Route::post('/user/add',[userController::class,'store']);
+
+
+

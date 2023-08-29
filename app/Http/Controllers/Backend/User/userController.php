@@ -18,13 +18,19 @@ class userController extends Controller
        }
     }
 
-
     // public function homeIndex(){
     //    return  User::latest()->get();
     // }
 
      public function store(Request $request){
     //    return $request->all();
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->save();
+
+        return $user;
     }
 
 }

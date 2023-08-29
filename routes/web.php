@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\product\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -8,9 +9,8 @@ use App\Notifications\EmailNotification;
 use Illuminate\Support\Facades\Notification;
 
 
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('Frontend.index');
 });
 
 
@@ -28,6 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+require __DIR__.'/auth.php';
+
+//Mail Notification to Multiple User
 
 Route::get('/send-notification', function(){
 
@@ -42,5 +45,37 @@ Route::get('/send-notification', function(){
     return redirect()->back();
 });
 
-require __DIR__.'/auth.php';
+
+
+
+
+
+//CRUD
+
+Route::get('/product',[ProductController::class,'index'])     //show
+        ->name('Backend.product.index');
+
+Route::get('/product/create',[ProductController::class,'create'])   //create
+        ->name('Backend.product.create');
+
+Route::post('/product/store',[ProductController::class,'store'])    //store
+        ->name('Backend.product.store');
+
+Route::get('/product/{id}/edit',[ProductController::class,'edit'])    //edit
+        ->name('Backend.product.edit');
+
+Route::put('/product/{id}/update',[ProductController::class,'update'])    //edit
+        ->name('Backend.product.update');
+
+// Route::get('/product/{id}/delete', [ProductController::class, 'destroy']);
+
+Route::delete('/product/{id}/delete', [ProductController::class, 'destroy']);
+
+
+
+
+//frontend
+
+
+
 
