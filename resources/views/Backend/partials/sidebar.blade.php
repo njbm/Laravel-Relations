@@ -51,7 +51,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="product" class="nav-link ">
+                <a href="{{ url('slider') }}" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Slider </p>
                 </a>

@@ -1,16 +1,28 @@
 <?php
 
+
 use App\Http\Controllers\Backend\product\ProductController;
+use App\Http\Controllers\Backend\slider\SliderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Models\Phones;
 use App\Models\User;
 use App\Notifications\EmailNotification;
 use Illuminate\Support\Facades\Notification;
 
 
+// Route::get('/', function () {
+//     return view('Frontend.index');
+// });
+
 Route::get('/', function () {
-    return view('Frontend.index');
+
+    $phone = User::find('1');
+    $phone = User::find('2')->phone;
+    // return $phone;
+    $user = Phones::
+    return view('Frontend.relation');
 });
 
 
@@ -48,34 +60,33 @@ Route::get('/send-notification', function(){
 
 
 
-
-
-//CRUD
+// Product CRUD
 
 Route::get('/product',[ProductController::class,'index'])     //show
         ->name('Backend.product.index');
-
 Route::get('/product/create',[ProductController::class,'create'])   //create
         ->name('Backend.product.create');
-
 Route::post('/product/store',[ProductController::class,'store'])    //store
         ->name('Backend.product.store');
-
 Route::get('/product/{id}/edit',[ProductController::class,'edit'])    //edit
         ->name('Backend.product.edit');
-
 Route::put('/product/{id}/update',[ProductController::class,'update'])    //edit
         ->name('Backend.product.update');
-
-// Route::get('/product/{id}/delete', [ProductController::class, 'destroy']);
-
 Route::delete('/product/{id}/delete', [ProductController::class, 'destroy']);
 
 
 
 
-//frontend
+//Slider CRUD
+// Route::get('/sliders', 'SliderController@index');
 
+
+Route::get('/slider', [SliderController::class, 'index'])->middleware('auth');
+Route::get('/slider/create', [SliderController::class, 'create']);
+Route::post('/slider', [SliderController::class, 'store']);
+Route::get('/slider/{id}/edit', [SliderController::class, 'edit']);
+Route::put('/slider/{id}/update', [SliderController::class, 'update']);
+Route::delete('/slider/{id}/delete', [SliderController::class, 'destroy']);
 
 
 

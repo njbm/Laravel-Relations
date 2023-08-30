@@ -38,7 +38,7 @@
       <td>
         <a href="product/{{ $product->id }}/edit" class="btn btn-dark ">Edit</a>
         {{-- <a href="product/{{ $product->id }}/delete" class="btn btn-danger ">Delete</a> --}}
-        <form action="product/{{ $product->id }}/delete" class="d-inline">
+        <form action="product/{{ $product->id }}/delete" class="d-inline" >
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Delete</button>
