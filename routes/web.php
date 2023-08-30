@@ -6,23 +6,39 @@ use App\Http\Controllers\Backend\slider\SliderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Models\Comment;
 use App\Models\Phones;
+use App\Models\Post;
 use App\Models\User;
 use App\Notifications\EmailNotification;
 use Illuminate\Support\Facades\Notification;
 
 
-// Route::get('/', function () {
-//     return view('Frontend.index');
-// });
+// Route::get('/', function () { return view('Frontend.index'); });
+
+Route::get('/app', function () { return view('Backend.layouts.app'); });
+
+Route::get('/table', function () { return view('Backend.layouts.content.data_table'); });
+
 
 Route::get('/', function () {
 
-    $phone = User::find('1');
-    $phone = User::find('2')->phone;
+    // $phone = User::find('1');
+    // $phone = User::find('2')->phone;
     // return $phone;
-    $user = Phones::
-    return view('Frontend.relation');
+    // $user = Phones::find(1);
+    // $user = Phones::find(2)->user;
+    // $users = User::all();
+    // return $users;
+
+
+    $comments =Post::find(1);
+    $comments =Post::find(1)->comments;
+    // $comments =Post::find(1)->comments;
+    return $comments;
+
+
+    return view('Frontend.relation', compact('users'));
 });
 
 
