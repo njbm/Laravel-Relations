@@ -17,9 +17,9 @@
     <!-- ########## END: RIGHT PANEL ########## --->
 
     <!-- ########## START: MAIN PANEL ########## -->
-
+<div class="br-mainpanel">
 @yield('main')
-
+</div>
     <!-- ########## END: MAIN PANEL ########## -->
 
 @include('Backend.layouts.partials.js')

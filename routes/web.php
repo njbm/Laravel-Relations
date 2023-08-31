@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Backend\product\ProductController;
 use App\Http\Controllers\Backend\slider\SliderController;
+use App\Http\Controllers\Backend\University\teacher\TeacherController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -33,12 +34,12 @@ Route::get('/', function () {
     // return $phone;
     // $user = Phones::find(1);
     // $user = Phones::find(2)->user;
-    // $users = User::all();
+    $users = User::all();
     // return $users;
 
 
     // $comments =Post::find(1);
-    $comments =Post::find(1)->comments;
+    // $comments =Post::find(1)->comments;
     // // $comments =Post::find(1)->comments;
     // // return $comments;
 
@@ -47,10 +48,13 @@ Route::get('/', function () {
 
     $posts= Post::with('comments')->get();
     // return $posts;
-    // dd($posts);
 
 
-    return view('Frontend.relation', compact('posts','comments'));
+    // $posts= Post::all();
+    // $posts= Post::with('cetegories')->get();
+
+
+    return view('Frontend.relation', compact('users','posts'));
 });
 
 
@@ -118,3 +122,17 @@ Route::delete('/slider/{id}/delete', [SliderController::class, 'destroy']);
 
 
 
+Route::get('/d', function(){
+    return view('Frontend.relation');
+});
+
+
+
+//University-- teacher CRUD
+
+Route::get('/teacher', [TeacherController::class,'index']);
+Route::get('/teacher/create', [TeacherController::class,'create']);
+Route::post('/teacher', [TeacherController::class, 'store']);
+Route::get('/teacher/{id}/edit', [TeacherController::class, 'edit']);
+Route::put('/teacher{id}/update', [TeacherController::class, 'update']);
+Route::delete('/teacher/{id}/delete', [TeacherController::class, 'destroy']);

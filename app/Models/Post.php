@@ -11,4 +11,7 @@ class Post extends Model
     public function comments(){
         return $this->hasMany(Comment::class);
     }
+    // public function cetegories(){
+    //     return $this->belongsToMany(Cetegory::class);
+    // }
 }
