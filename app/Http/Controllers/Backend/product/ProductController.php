@@ -17,15 +17,10 @@ class ProductController extends Controller
         return view('Backend.product.create');
     }
 
-    // public function store(){
-    //     return view('Backend.product.create');
-    // }
-
     public function store(Request $request) {
         $request->validate([
             'name' => 'required',
             'price' => 'required',
-
         ]);
 
         $product = new Product();
@@ -48,7 +43,6 @@ class ProductController extends Controller
     public function edit($id){
         $product= Product::where('id',$id)->first();
         return view('Backend.product.edit', ['product'=>$product]);
-
     }
 
     public function update(Request $request, $id){

@@ -31,16 +31,20 @@
   <thead>
     <tr>
       <th scope="col">User ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Phone</th>
+      <th scope="col">Post</th>
+      <th scope="col">Comments</th>
     </tr>
   </thead>
   <tbody>
-    @foreach ($comments as $data )
+    @foreach ($posts as $data )
     <tr>
-      <td>{{ $data->post_id }}</td>
-      <td>{{ $data->comment->message }}</td>
-      {{-- <td>{{ $data->phone->name }}</td> --}}
+      <td>{{ $data->id }}</td>
+      <td>{{ $data->title }}</td>
+      <td>
+        @foreach ($data->comments as $comment )
+         {{ $comment->message }}
+        @endforeach
+      </td>
     </tr>
     @endforeach
 

@@ -14,9 +14,9 @@
 <section style="background-color: #eee;">
   <div class="container py-5">
 
-    {{-- @foreach ( as )
+    @foreach ($products as $data )
 
-    @endforeach --}}
+
 
     <div class="row justify-content-center mb-3">
       <div class="col-md-12 col-xl-10">
@@ -35,7 +35,7 @@
                 </div>
               </div>
               <div class="col-md-6 col-lg-6 col-xl-6">
-                <h5>Quant trident shirts</h5>
+                <h5>{{ $data->name }}</h5>
                 <div class="d-flex flex-row">
                   <div class="text-danger mb-1 me-2">
                     <i class="fa fa-star"></i>
@@ -43,7 +43,7 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                   </div>
-                  <span>310</span>
+                  <span>{{ $data->price }}</span>
                 </div>
                 <div class="mt-1 mb-0 text-muted small">
                   <span>100% cotton</span>
@@ -60,9 +60,7 @@
                   <span>Casual<br /></span>
                 </div>
                 <p class="text-truncate mb-4 mb-md-0">
-                  There are many variations of passages of Lorem Ipsum available, but the
-                  majority have suffered alteration in some form, by injected humour, or
-                  randomised words which don't look even slightly believable.
+                  {{ $data->description }}
                 </p>
               </div>
               <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
@@ -83,7 +81,7 @@
         </div>
       </div>
     </div>
-
+    @endforeach
   </div>
 </section>
 </body>

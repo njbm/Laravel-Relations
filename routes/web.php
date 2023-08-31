@@ -9,12 +9,17 @@ use App\Http\Controllers\DashboardController;
 use App\Models\Comment;
 use App\Models\Phones;
 use App\Models\Post;
+use App\Models\Product;
 use App\Models\User;
 use App\Notifications\EmailNotification;
 use Illuminate\Support\Facades\Notification;
 
 
 // Route::get('/', function () { return view('Frontend.index'); });
+
+Route::get('/f-product', function () {
+    $products= Product::all();
+    return view('Frontend.product',compact('products')); });
 
 Route::get('/app', function () { return view('Backend.layouts.app'); });
 
@@ -32,13 +37,20 @@ Route::get('/', function () {
     // return $users;
 
 
-    $comments =Post::find(1);
+    // $comments =Post::find(1);
     $comments =Post::find(1)->comments;
-    // $comments =Post::find(1)->comments;
-    return $comments;
+    // // $comments =Post::find(1)->comments;
+    // // return $comments;
+
+    // $post =Comment::find(1);
+    // $post =Comment::find(2)->post;
+
+    $posts= Post::with('comments')->get();
+    // return $posts;
+    // dd($posts);
 
 
-    return view('Frontend.relation', compact('users'));
+    return view('Frontend.relation', compact('posts','comments'));
 });
 
 
