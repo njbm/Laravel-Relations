@@ -56,7 +56,8 @@ class ProductController extends Controller
         if (isset($request->image)){
             $image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('Backend/product/images'), $filename);
+            $location= public_path('Backend/product/images');
+            $image->move($location, $filename);
             $product->image = $filename;
         }
         $product->name = $request->input('name');
@@ -70,6 +71,10 @@ class ProductController extends Controller
 
     public function destroy($id){
         $product= Product::where('id', $id)->first();
+
+        if($product->image){
+            unlink(public_path('Backend/product/images').'/'.$product->image);
+        }
         $product->delete();
         return back();
     }

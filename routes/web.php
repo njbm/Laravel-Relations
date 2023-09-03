@@ -104,7 +104,8 @@ Route::get('/product/{id}/edit',[ProductController::class,'edit'])    //edit
         ->name('Backend.product.edit');
 Route::put('/product/{id}/update',[ProductController::class,'update'])    //edit
         ->name('Backend.product.update');
-Route::delete('/product/{id}/delete', [ProductController::class, 'destroy']);
+// Route::delete('/product/{id}/delete', [ProductController::class, 'destroy']);
+Route::get('/product/{id}/delete', [ProductController::class, 'destroy']);
 
 
 

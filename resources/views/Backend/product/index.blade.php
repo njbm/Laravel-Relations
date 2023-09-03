@@ -37,12 +37,12 @@
       <td>{{ $product->description }}</td>
       <td>
         <a href="product/{{ $product->id }}/edit" class="btn btn-dark ">Edit</a>
-        {{-- <a href="product/{{ $product->id }}/delete" class="btn btn-danger ">Delete</a> --}}
-        <form action="product/{{ $product->id }}/delete" class="d-inline" >
+        <a href="product/{{ $product->id }}/delete" class="btn btn-danger ">Delete</a>
+        <!-- <form action="product/{{ $product->id }}/delete" class="d-inline" >
             @csrf
-            @method('DELETE')
+            @method('delete')
             <button type="submit" class="btn btn-danger">Delete</button>
-        </form>
+        </form> -->
       </td>
     </tr>
     @endforeach

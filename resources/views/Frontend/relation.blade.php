@@ -17,7 +17,7 @@
     <tr>
       <td>{{ $user->id }}</td>
       <td>{{ $user->name }}</td>
-      <td>{{ $user->phone->name }}</td>
+      <td>@if($user->phone->name){{ $user->phone->name }}@endif</td>
     </tr>
     @endforeach
 

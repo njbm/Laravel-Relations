@@ -1007,7 +1007,7 @@
       </footer>
     </div><!-- br-mainpanel -->
 
-@endsection
+
 
     <script>
       $(function(){
@@ -1048,3 +1048,4 @@
     <script src="{{ asset('beckend/lib/select2/js/select2.min.js') }}"></script>
 
     <script src="{{ asset('beckend/js/bracket.js') }}"></script>
+    @endsection
